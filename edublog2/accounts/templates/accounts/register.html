@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-header text-black">
+                  <h2>Registration</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                       <div class="col-lg-6">
+                        <h3>For students</h3>
+                        <p>Join and Explore different fields by different personalities.</p>
+                        <a type="button" class="btn btn-block btn-primary" href="{% url 'accounts:student_register' %}">For Students</a>
+                       </div>
+                       <div class="col-lg-6">
+                         <h3>For Faculty</h3>
+                         <p>Here is the platform to express your knowledge to the society.</p>
+                        <a type="button" class="btn btn-block btn-primary" href="{% url 'accounts:faculty_register' %}">For Faculty</a>
+                       </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+{% endblock %}

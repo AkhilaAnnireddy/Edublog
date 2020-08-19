@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Favorites</li>
+    </ol>
+  </nav>
+  <div class="card">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in favourite_posts %}
+          <tr>
+            <td class="align-middle"><a href="{% url 'posts:post-detail' post.pk %}">{{ post.title }}</a></td>
+            <td class="align-middle">{{post.created_at }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="bg-light text-center font-italic" colspan="5">You haven't favorited any post yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

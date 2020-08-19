@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'posts:myposts' %}">My Posts</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{post.title}}</li>
+    </ol>
+  </nav>
+  <h2 class="mb-3">Update Post</h2>
+  <div class="row mb-3">
+    <div class="col-md-6 col-sm-8 col-12">
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <br>
+        <button type="submit" class="btn btn-success">Save changes</button>
+        <a href="{% url 'posts:delete' post.pk %}" class="btn btn-danger" style="margin-left:40px">Delete</a>
+      </form>
+    </div>
+{% endblock %}

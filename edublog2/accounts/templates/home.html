@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h2 style="color:#4682B4">Welcome to EduBlog!</h2>
+<hr>
+<br>
+<img src="{% static 'accounts/img/edublog_logo.png' %}" style="float:left;width:27%;margin-right:35px;border-radius:10%">
+<p>
+    An edublog is a blog created for educational purposes. Edublogs archive and support student and teacher learning by
+     facilitating reflection, questioning by self and others, collaboration and by providing contexts for engaging in
+      higher-order thinking.Edublogs proliferated when blogging architecture became more simplified and teachers
+       perceived the instructional potential of blogs as an online resource.</p>
+       <p>
+       The use of blogs has become popular in
+        education institutions including public schools and colleges.Blogs can be useful tools for sharing information
+    and tips among co-workers, providing information for students, or keeping in contact with parents. Common examples
+     include blogs written by or for teachers, blogs maintained for the purpose of classroom instruction,
+     or blogs written about educational policy. Educators who blog are sometimes called edubloggers.
+</p>
+<br>
+<h4 style="color:#4682B4">Please Login to view Posts </h4>
+<a href="{% url 'accounts:login' %}" class="btn btn-primary"><i class="glyphicon glyphicon-user" style="font-weight:bold"></i> Login</a>
+{% endblock %}

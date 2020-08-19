@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'posts:myposts' %}">My Posts</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add a new post</li>
+    </ol>
+  </nav>
+  <h2 class="mb-3">Add a new post</h2>
+  <form method="POST" novalidate>
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'posts:myposts' %}" class="btn btn-outline-secondary" role="button">Nevermind</a>
+  </form>
+  <br>
+  <br>
+{% endblock %}

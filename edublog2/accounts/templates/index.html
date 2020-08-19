@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 style="font-weight:bold">Welcome to EduBlog {{user.username}} :</h3>
+<hr>
+{% for post in posts %}
+    <div class="card" style="padding: 10px 20px;margin-bottom: 30px;">
+      <table class="table mb-0">
+          <div style="padding-bottom: 1px;margin-bottom: 15px;border-bottom: 1px solid #e3e3e3">
+            <p><a href=" {% url 'accounts:profile' post.user.username %} " style="color:#007bff;font-size:19px">{{post.user}}</a> <span class="text-muted" style="float:right;font-size:15px">{{post.created_at }}</span></p>
+          </div>
+          <h3 style="color: #444444;" class="align-middle"><a href="{% url 'posts:post-detail' post.pk %}">{{ post.title }}</a></h3>
+          <div class="text">
+            <p>{{post.message|safe|truncatewords:120}} {% if post.message|wordcount > 120 %}<a href="{% url 'posts:post-detail' post.pk %}">read more</a>{% endif %}</p>
+          </div>
+      </table>
+    </div>
+{% empty %}
+  <tr>
+    <td class="bg-light text-center font-italic" colspan="5">You haven't created any post yet.</td>
+  </tr>
+{% endfor %}
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+  </span>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<br>
+    <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-header text-black">
+                  <h2>Login</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'accounts:login' %}" method="POST" novalidate>
+                      {% csrf_token %}
+                         {% for field in form.visible_fields %}
+                           <div class="form-group">
+                               {{ field.label_tag }}
+                                  {% render_field field class="form-control" %}
+                         {% endfor %}
+                         <br>
+                             <input type="submit" value="Login" class="btn btn-block btn-primary">
+                           </div>
+                    </form>
+                 </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+      {% endblock %}

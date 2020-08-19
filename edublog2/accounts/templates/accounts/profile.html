@@ -1,0 +1,61 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+ <div class="col-md-3">
+    <div class="content-section">
+      <div class="media" style="text-align:center">
+        <figure>
+        {% if user1.faculty.image %}
+        <img class="rounded-circle account-img" style="width: 150px;height: 150px;" src="{{ user1.faculty.image.url }}" >
+        {% else %}
+        <img class="rounded-circle account-img" style="width: 150px;height: 150px;" src="{% static 'deault/default_profile.png' %}">
+        {% endif %}
+        <div class="media-body text-center">
+          <figcaption><h2 class="account-heading">{{ user1.username }}</h2></figcaption>
+          <figcaption><h4>@{{user1.first_name}} {{user1.last_name}}</h4></figcaption>
+        </figure>
+        </div>
+        <br>
+        <legend class="border-bottom mb-4 text-center">Profile Info</legend>
+        <h5>Phone Number: {{user1.faculty.phone_number}}</h5>
+        <h5>Designation: {{user1.faculty.designation}}</h5>
+        <ul class="list-group">
+          <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+          <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> {{no_likes}}</li>
+          <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> {{total_posts}}</li>
+        </ul>
+        {% if equal %}
+          <a href="{% url 'accounts:updateprofile' %}"><button class=" btn btn-primary">Update Profile</button></a>
+        {% endif %}
+        </div>
+  </div>
+  <div class="col-md-9">
+    <div class="card">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+            <tr>
+              <td class="align-middle"><a href="{% url 'posts:post-detail' post.pk %}">{{ post.title }}</a></td>
+              <td class="align-middle">{{post.created_at }}</td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td class="bg-light text-center font-italic" colspan="5">You haven't created any post yet.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+© 2020 GitHub, Inc.
