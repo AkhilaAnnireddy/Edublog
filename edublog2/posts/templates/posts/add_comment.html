@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="POST" >
+        {% csrf_token %}
+        <h3>Add Comment</h3>
+        {{ form|crispy }}
+        <button class = "btn btn-outline-info" type="submit">Add Comment</button>
+    </form>
+{% endblock %}
