@@ -22,7 +22,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 @method_decorator([login_required, faculty_required], name='dispatch')
 class CreatePost(CreateView):
     model = Post
-    fields = ('title', 'message', )
+    fields = ('title', 'message', 'pdf')
     template_name = 'posts/addpost.html'
 
     def form_valid(self, form):
@@ -34,7 +34,7 @@ class CreatePost(CreateView):
 @method_decorator([login_required, faculty_required], name='dispatch')
 class UpdatePost(UpdateView):
     model = Post
-    fields = ('title', 'message', )
+    fields = ('title', 'message','pdf' )
     context_object_name = 'post'
     template_name = 'posts/updatepost.html'
 
@@ -131,4 +131,3 @@ def like_post(request, pk):
     else:
         post.likes.add(request.user)
     return HttpResponseRedirect(reverse('posts:post-detail',kwargs={'pk':pk}))
-

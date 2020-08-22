@@ -11,6 +11,8 @@
           <h3 style="color: #444444;" class="align-middle"><a href="{% url 'posts:post-detail' post.pk %}">{{ post.title }}</a></h3>
           <div class="text">
             <p>{{post.message|safe|truncatewords:120}} {% if post.message|wordcount > 120 %}<a href="{% url 'posts:post-detail' post.pk %}">read more</a>{% endif %}</p>
+            <a href="/media/{{post.pdf}}">{{post.pdf}}</a>
+
           </div>
       </table>
     </div>

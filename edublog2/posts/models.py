@@ -19,8 +19,8 @@ class Post(models.Model):
     message_html = models.TextField(editable=False)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
     favourite = models.ManyToManyField(User, related_name='favorite', blank=True)
+    pdf = models.FileField(null=True,blank=True)
 
-    
     def __str__(self):
         return self.title
 

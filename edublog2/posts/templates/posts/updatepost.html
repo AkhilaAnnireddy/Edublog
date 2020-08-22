@@ -12,7 +12,8 @@
   <h2 class="mb-3">Update Post</h2>
   <div class="row mb-3">
     <div class="col-md-6 col-sm-8 col-12">
-      <form method="post" novalidate>
+      <form method="POST" enctype="multipart/form-data" novalidate>
+        
         {% csrf_token %}
         {{ form.media }}
         {{ form|crispy }}

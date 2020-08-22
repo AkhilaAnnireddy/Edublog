@@ -14,9 +14,10 @@
         {% endif %}
       </h3>
       <p>{{post.message|safe}}</p>
+      <a href="/media/{{post.pdf}}">{{post.pdf}}</a>
+
   </table>
 </div>
-
 <div id="favourite-section" style="float:right;">
   {% if is_favourite %}
   <a href="{% url 'posts:favourite_post' pk=post.id %}">
