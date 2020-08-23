@@ -40,20 +40,6 @@
     <button type="submit",name="post_id",value="{{post.pk}}" class="btn"><i class="glyphicon glyphicon-thumbs-up"></i></button> <span style="font-weight:bold">.</span> {{total_likes}} Likes
     {% endif %}
   </form>
-  {% if post.comments.all %}
-    <a href = "{% url 'posts:add_comment' post.pk %}">Add comment</a>
-    <br>
-    {% for comment in post.comments.all %}
-        <strong>
-            {{ comment.name }}- {{ comment.date_added}}
-        </strong>
-        <br>
-        {{ comment.body }}
-        <hr>
-    {% endfor %}
-  {% else %}
-      No comments Yet...<a href="{% url 'posts:add_comment' post.pk %}">Add One</a>
-  {% endif %}
 </div>
 
 {% endblock %}

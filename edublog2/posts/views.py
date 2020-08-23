@@ -13,8 +13,9 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
 from decorators import faculty_required
-from .models import Post,Comment
-from .forms import CommentForm
+from . import models
+User = get_user_model()
+from .models import Post
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
@@ -130,17 +131,3 @@ def like_post(request, pk):
     else:
         post.likes.add(request.user)
     return HttpResponseRedirect(reverse('posts:post-detail',kwargs={'pk':pk}))
-
-class AddCommentView(CreateView):
-    model = Comment
-    # form_class = CommentForm
-    template_name = 'posts/add_comment.html'
-    fields = ( 'body', )
-    def get_success_url(self):
-        return reverse('posts:post-detail', kwargs={'pk': self.kwargs['pk']})
-
-
-    def form_valid(self, form):
-        form.instance.post_id = self.kwargs['pk']
-        form.instance.name = self.request.user
-        return super().form_valid(form)

@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.views.generic import CreateView
 from .forms import StudentSignUpForm, FacultySignUpForm,UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.forms import AuthenticationForm
-from .models import User, Faculty
+from .models import User
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from decorators import faculty_required
@@ -89,7 +89,3 @@ def profile(request,username):
     if user1.username==request.user.username:
         equal=1
     return render(request,'accounts/profile.html',{'posts':posts,'equal':equal,'user1':user1,'total_posts':total_posts,'no_likes':no_likes})
-
-def allfaculty(request):
-    users = User.objects.all()
-    return render(request,'accounts/allfaculty.html',{'users': users})

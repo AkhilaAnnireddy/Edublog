@@ -94,7 +94,6 @@ background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, F
           <a class="nav-item nav-link" href="{% url 'posts:myposts' %}" class="btn btn-simple">My Posts</a>
           <a class="nav-item nav-link" href="{% url 'accounts:profile' user.username %}" class="btn btn-simple">Profile</a>
         {% endif %}
-        <a class="nav-item nav-link" href="{% url 'accounts:allfaculty' %}" class="btn btn-simple">Faculty Profile</a>
         <a class="nav-item nav-link" href="{% url 'posts:post_favourite_list' %}" class="btn btn-simple">saved</a>
         <a class="nav-item nav-link" href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a>
         {% else %}
