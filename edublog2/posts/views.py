@@ -132,6 +132,7 @@ def like_post(request, pk):
         post.likes.add(request.user)
     return HttpResponseRedirect(reverse('posts:post-detail',kwargs={'pk':pk}))
 
+@method_decorator([login_required], name='dispatch')
 class AddCommentView(CreateView):
     model = Comment
     # form_class = CommentForm

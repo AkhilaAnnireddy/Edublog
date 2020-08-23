@@ -1,13 +1,29 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 {% block content %}
-{% for user in users %}
-{% if user.is_faculty %}
-    <div class="card" style="padding: 10px 10px;margin-bottom: 20px;">
-    <h3><a href=" {% url 'accounts:profile' user.username %} " style="color:#007bff;font-size:19px">
-    {{ user.username }}</a></h3>
-    </div>
-{% endif %}
-{% endfor %}
+<div class="col-md-9">
+  <div class="card">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th><h4 style="font-weight:bold;">Faculty</h4></th>
+          <th><h4 style="font-weight:bold;">Designation</h4></th>
+          <th><h4 style="font-weight:bold;">Number of posts</h4></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        {% if user.is_faculty %}
+          <tr>
+            <td class="align-middle"><img class="rounded-circle account-img" style="width: 65px;height: 65px;" src="{{ user.faculty.image.url }}" ><a href=" {% url 'accounts:profile' user.username %} " style="color:#007bff;font-size:19px;margin-left:20px;">: {{ user.username }}</a></td>
+            <td class="align-middle"><p>{{user.faculty.designation}}</p></td>
+            <td class="align-middle">{{user.posts.count}}</td>
+          </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 
 {% endblock content %}
