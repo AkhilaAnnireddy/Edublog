@@ -13,6 +13,7 @@ urlpatterns=[
     path('favourites/', views.post_favourite_list, name="post_favourite_list"),
     path('favourite_post/<int:pk>', views.favourite_post, name="favourite_post"),
     path('like_post/<int:pk>', views.like_post, name="like_post"),
+    path('post/<int:pk>/comment/',views.AddCommentView.as_view(), name='add_comment'),
 
 ]
 if settings.DEBUG:

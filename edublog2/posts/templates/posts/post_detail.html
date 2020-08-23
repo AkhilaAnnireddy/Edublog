@@ -41,7 +41,22 @@
     {% endif %}
   </form>
 </div>
-
+{% if post.comments.all %}
+  <a href = "{% url 'posts:add_comment' post.pk %}">Add comment</a>
+  <br>
+  {% for comment in post.comments.all %}
+    <strong>
+      {{ comment.name }}- {{ comment.date_added}}
+    </strong>
+    <br>
+    {{ comment.body }}
+    <hr>
+  {% endfor %}
+{% else %}
+  No comments Yet...<a href="{% url 'posts:add_comment' post.pk %}">Add One</a>
+{% endif %}
+<br>
+<br>
 {% endblock %}
 
 
