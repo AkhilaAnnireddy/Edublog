@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% for user in users %}
+{% if user.is_faculty %}
+    <div class="card" style="padding: 10px 10px;margin-bottom: 20px;">
+    <h3><a href=" {% url 'accounts:profile' user.username %} " style="color:#007bff;font-size:19px">
+    {{ user.username }}</a></h3>
+    </div>
+{% endif %}
+{% endfor %}
+
+{% endblock content %}
