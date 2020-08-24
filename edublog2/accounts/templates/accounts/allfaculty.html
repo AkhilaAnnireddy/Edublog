@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load static %}
 {% block content %}
 <div class="col-md-9">
   <div class="card">
@@ -15,7 +16,11 @@
         {% for user in users %}
         {% if user.is_faculty %}
           <tr>
-            <td class="align-middle"><img class="rounded-circle account-img" style="width: 65px;height: 65px;" src="{{ user.faculty.image.url }}" ><a href=" {% url 'accounts:profile' user.username %} " style="color:#007bff;font-size:19px;margin-left:20px;">: {{ user.username }}</a></td>
+            {% if user.faculty.image %}
+            <td class="align-middle"><img class="rounded-circle account-img" style="width: 65px;height: 65px;"  src="{{ user.faculty.image.url }}" ><a href=" {% url 'accounts:profile' user.username %} " style="color:#007bff;font-size:19px;margin-left:20px;">: {{ user.username }}</a></td>
+            {% else %}
+            <td class="align-middle"><img class="rounded-circle account-img" style="width: 65px;height: 65px;"  src="{% static 'accounts/img/default_profile.png' %}" ><a href=" {% url 'accounts:profile' user.username %} " style="color:#007bff;font-size:19px;margin-left:20px;">: {{ user.username }}</a></td>
+            {% endif %}
             <td class="align-middle"><p>{{user.faculty.designation}}</p></td>
             <td class="align-middle">{{user.posts.count}}</td>
           </tr>

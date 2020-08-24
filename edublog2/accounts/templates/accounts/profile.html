@@ -11,7 +11,7 @@
         {% if user1.faculty.image %}
         <img class="rounded-circle account-img" style="width: 150px;height: 150px;" src="{{ user1.faculty.image.url }}" >
         {% else %}
-        <img class="rounded-circle account-img" style="width: 150px;height: 150px;" src="{% static 'deault/default_profile.png' %}">
+        <img class="rounded-circle account-img" style="width: 150px;height: 150px;" src="{% static 'accounts/img/default_profile.png' %}">
         {% endif %}
         <div class="media-body text-center">
           <figcaption><h2 class="account-heading">{{ user1.username }}</h2></figcaption>

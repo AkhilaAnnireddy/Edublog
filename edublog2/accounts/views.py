@@ -71,10 +71,15 @@ def updateprofile(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.faculty)
+    posts=Post.objects.filter(user=request.user)
+    total_posts=posts.count()
+    no_likes=request.user.posts.aggregate(total_likes=Count('likes'))['total_likes']
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'total_posts':total_posts,
+        'no_likes':no_likes
     }
 
     return render(request, 'accounts/updateprofile.html', context)
