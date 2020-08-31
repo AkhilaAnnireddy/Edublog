@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card" style="padding: 10px 20px;margin-bottom: 20px;">
+<div class="card" style="padding: 10px 20px;margin-bottom: 20px;box-shadow: 0 0 5px rgba(0,0,0,0.5);">
   <table class="table mb-0">
       <div style="padding-bottom: 1px;margin-bottom: 15px;border-bottom: 1px solid #e3e3e3">
         <p><a href=" {% url 'posts:user-posts' post.user.pk %} " style="color:#007bff;font-size:19px">{{post.user}}</a> <span class="text-muted" style="float:right;font-size:15px">{{post.created_at }}</span></p>

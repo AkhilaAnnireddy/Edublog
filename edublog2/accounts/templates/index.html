@@ -3,7 +3,7 @@
 <h3 style="font-weight:bold;color: white;text-shadow: 2px 2px 4px #000000;">Welcome to EduBlog {{user.username}} :</h3>
 <hr>
 {% for post in posts %}
-    <div class="card" style="padding: 10px 20px;margin-bottom: 30px;">
+    <div class="card" style="padding: 10px 20px;margin-bottom: 30px;box-shadow: 0 0 5px rgba(0,0,0,0.5);">
       <table class="table mb-0">
           <div style="padding-bottom: 1px;margin-bottom: 15px;border-bottom: 1px solid #e3e3e3">
             <p><a href=" {% url 'accounts:profile' post.user.username %} " style="color:#007bff;font-size:19px">{{post.user}}</a> <span class="text-muted" style="float:right;font-size:15px">{{post.created_at }}</span></p>
